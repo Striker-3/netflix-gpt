@@ -2,12 +2,14 @@ import Header from "./Header";
 import { useRef, useState } from "react";
 import { formValidation } from "../utils/formValidation";
 import {
-  confirmPasswordReset,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,6 +17,8 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const email = useRef(null);
   const password = useRef(null);
+  const name = useRef(null);
+  const dispatch = useDispatch();
 
   const toggleSignIn = () => {
     setIsSignIn(!isSignIn);
@@ -37,8 +41,25 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL: "https://example.com/jane-q-user/profile.jpg",
+          })
+            .then(() => {
+              // Profile updated!
+              // ...
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({ uid: uid, email: email, displayName: displayName })
+              );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+              setErrorMessage(error.message);
+            });
+
           // ...
         })
         .catch((error) => {
@@ -89,6 +110,7 @@ const Login = () => {
             </h3>
             {!isSignIn && (
               <input
+                ref={name}
                 type="text"
                 placeholder="Full Name"
                 className="p-3 mb-8 w-4/6   border rounded bg-black text-white"
