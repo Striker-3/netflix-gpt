@@ -9,6 +9,7 @@ import {
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { BACKGROUND_IMG } from "../utils/constants";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -88,11 +89,7 @@ const Login = () => {
     <div className="relative">
       <Header />
       <div>
-        <img
-          className="opacity-80"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/81d64f3c-9627-4741-8f74-422bf35f9f1d/web/IN-en-20241104-TRIFECTA-perspective_55263ea2-af7f-40ed-9cf0-7029a9b9baf4_large.jpg"
-          alt="background"
-        />
+        <img className="opacity-80" src={BACKGROUND_IMG} alt="background" />
         <div className="absolute inset-0 bg-black opacity-50"></div>
 
         {/* Centered Form */}
