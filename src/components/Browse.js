@@ -2,14 +2,14 @@ import { signOut } from "firebase/auth";
 import Header from "./Header";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { MOVIE_API_OPTIONS, USER_LOGO } from "../utils/constants";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { addNowPlayingMovies } from "../utils/moviesSlice";
+import { USER_LOGO } from "../utils/constants";
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies.js";
+import MainContainer from "./MainContainer.js";
+import SecondaryContainer from "./SecondaryContainer.js";
 
 const Browse = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -21,29 +21,21 @@ const Browse = () => {
       });
   };
 
-  const getNowPlayingMovies = async () => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
-      MOVIE_API_OPTIONS
-    );
-    const json = await data.json();
-    dispatch(addNowPlayingMovies(json.results));
-    console.log(json.results);
-  };
-
-  useEffect(() => {
-    getNowPlayingMovies();
-  }, []);
-
+  // Movies into the store
+  useNowPlayingMovies();
   return (
-    <div className="flex justify-between">
-      <Header />
-      <div className="flex mt-8">
-        <img className="w-12 mr-2" src={USER_LOGO} alt="icon-Netflix" />
-        <p className="mr-6 p-4 cursor-pointer" onClick={handleSignOut}>
-          (Sign Out)
-        </p>
+    <div>
+      <div className="flex justify-between">
+        <Header />
+        <div className="flex mt-8">
+          <img className="w-12 mr-2" src={USER_LOGO} alt="icon-Netflix" />
+          <p className="mr-6 p-4 cursor-pointer" onClick={handleSignOut}>
+            (Sign Out)
+          </p>
+        </div>
       </div>
+      <MainContainer />
+      <SecondaryContainer />
     </div>
   );
 };

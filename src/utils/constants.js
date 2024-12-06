@@ -12,6 +12,6 @@ export const MOVIE_API_OPTIONS = {
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMDRkYmE4ODRiZjI1ZGM1NzVlZjNjYjYyMWQyMDA4MCIsIm5iZiI6MTczMjAxNTA4MS4zNzQyNTU3LCJzdWIiOiI2NzNjNzFmOTc4ZjBjZDQ4OTE3Mzk2N2UiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.vyxqEd3mHFAP_wY24HdquOXpj22i90dS4qf5xRI_s0o",
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMDRkYmE4ODRiZjI1ZGM1NzVlZjNjYjYyMWQyMDA4MCIsIm5iZiI6MTczMjM2MDc3Ny40MjI0NTEzLCJzdWIiOiI2NzNjNzFmOTc4ZjBjZDQ4OTE3Mzk2N2UiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.NyGj1T7NldjaIoLdC8EfxRi7lRhsnCmFdvcdDolIe-Y",
   },
 };

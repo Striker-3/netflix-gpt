@@ -24,6 +24,7 @@
 - Custom Hook for Now Playing Movies
 - Create movieSlice
 - Update Store with movies Data
+
 - Planning for MainContauiner & secondary container
 - Fetch Data for Trailer Video
 - Update Store with Trailer Video Data
