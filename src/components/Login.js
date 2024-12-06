@@ -86,7 +86,7 @@ const Login = () => {
     }
   };
   return (
-    <div className="relative">
+    <div className="relative h-screen overflow-hidden">
       <Header />
       <div>
         <img className="opacity-80" src={BACKGROUND_IMG} alt="background" />

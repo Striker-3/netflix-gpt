@@ -1,44 +1,26 @@
-import { useEffect } from "react";
-import { MOVIE_API_OPTIONS } from "../utils/constants";
-import { useDispatch, useSelector } from "react-redux";
-import { addNowPlayingTrailers } from "../utils/moviesSlice";
+import { useSelector } from "react-redux";
+import useMovieTrailer from "../hooks/useMovieTrailers";
 
 const VideoBackground = ({ movieId }) => {
-  const dispatch = useDispatch();
   const trailerVideo = useSelector(
     (store) => store?.movies?.nowPlayingTrailers
   );
-  const videoTrailer = async () => {
-    const data = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
-      MOVIE_API_OPTIONS
-    );
 
-    const json = await data.json();
-    const filterTrailer = json.results?.filter(
-      (video) => video.type === "Trailer"
-    );
-    const trailer = filterTrailer.length ? filterTrailer[0] : json.results[0];
-    console.log(trailer);
-    dispatch(addNowPlayingTrailers(trailer));
-  };
+  // Fetch the movie trailer
+  useMovieTrailer(movieId);
 
-  useEffect(() => {
-    videoTrailer();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   return (
-    <div>
-      {trailerVideo && trailerVideo.key ? (
+    <div className="relative w-full h-screen ">
+      {/* Display YouTube iframe when trailer video is available */}
+      {trailerVideo?.key ? (
         <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/${trailerVideo.key}?si=5QOYzQl1XUQIXsuW`}
+          className="w-full h-full object-cover "
+          src={`https://www.youtube.com/embed/${trailerVideo.key}?autoplay=1&controls=0&modestbranding=1&showinfo=0&rel=0&fs=0&iv_load_policy=3&mute=1`}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         ></iframe>
       ) : (
-        <p>Loading trailer...</p>
+        <p className="text-white text-center">Loading trailer...</p>
       )}
     </div>
   );

@@ -9,6 +9,7 @@ import { NETFLIX_LOGO } from "../utils/constants";
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -16,7 +17,6 @@ const Header = () => {
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
         navigate("/browse");
       } else {
-        // User is signed out
         dispatch(removeUser());
         navigate("/");
       }
@@ -24,13 +24,10 @@ const Header = () => {
 
     return () => unsubscribe();
   }, [dispatch, navigate]);
+
   return (
     <div>
-      <img
-        className=" w-48 absolute mx-6 my-3 z-40"
-        src={NETFLIX_LOGO}
-        alt="Logo"
-      />
+      <img className="w-48 mx-6 my-3 z-40" src={NETFLIX_LOGO} alt="Logo" />
     </div>
   );
 };

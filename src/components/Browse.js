@@ -23,9 +23,10 @@ const Browse = () => {
 
   // Movies into the store
   useNowPlayingMovies();
+
   return (
-    <div>
-      <div className="flex justify-between">
+    <div className="relative">
+      <div className="flex justify-between bg-gradient-to-b from-black h-20 absolute w-full z-50">
         <Header />
         <div className="flex mt-8">
           <img className="w-12 mr-2" src={USER_LOGO} alt="icon-Netflix" />
