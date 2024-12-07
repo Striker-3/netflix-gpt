@@ -30,7 +30,10 @@ const Browse = () => {
         <Header />
         <div className="flex mt-8">
           <img className="w-12 mr-2" src={USER_LOGO} alt="icon-Netflix" />
-          <p className="mr-6 p-4 cursor-pointer" onClick={handleSignOut}>
+          <p
+            className="mr-6 p-4 cursor-pointer text-white"
+            onClick={handleSignOut}
+          >
             (Sign Out)
           </p>
         </div>
