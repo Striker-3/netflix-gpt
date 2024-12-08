@@ -6,6 +6,9 @@ import { USER_LOGO } from "../utils/constants";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies.js";
 import MainContainer from "./MainContainer.js";
 import SecondaryContainer from "./SecondaryContainer.js";
+import usePopularMovies from "../hooks/usePopularMovies.js";
+import useTopRatedMovies from "../hooks/useTopRatedMovies.js";
+import useUpcomingMovies from "../hooks/useUpcomingMovies.js";
 
 const Browse = () => {
   const navigate = useNavigate();
@@ -23,6 +26,9 @@ const Browse = () => {
 
   // Movies into the store
   useNowPlayingMovies();
+  usePopularMovies();
+  useTopRatedMovies();
+  useUpcomingMovies();
 
   return (
     <div>
