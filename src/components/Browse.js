@@ -9,8 +9,13 @@ import SecondaryContainer from "./SecondaryContainer.js";
 import usePopularMovies from "../hooks/usePopularMovies.js";
 import useTopRatedMovies from "../hooks/useTopRatedMovies.js";
 import useUpcomingMovies from "../hooks/useUpcomingMovies.js";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleGptSearch } from "../utils/gptSlice.js";
+import GptSearch from "./GptSearch.js";
 
 const Browse = () => {
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSignOut = () => {
@@ -30,12 +35,22 @@ const Browse = () => {
   useTopRatedMovies();
   useUpcomingMovies();
 
-  return (
+  const handleGptSearch = () => {
+    dispatch(toggleGptSearch());
+  };
+
+  return !showGptSearch ? (
     <div>
       <div className="relative">
         <div className="flex justify-between bg-gradient-to-b from-black h-20 absolute w-full z-50">
           <Header />
           <div className="flex mt-8">
+            <button
+              className="text-white  bg-purple-500 mr-8 px-4 rounded-lg"
+              onClick={handleGptSearch}
+            >
+              GPT Search
+            </button>
             <img className="w-12 mr-2" src={USER_LOGO} alt="icon-Netflix" />
             <p
               className="mr-6 p-4 cursor-pointer text-white"
@@ -51,6 +66,11 @@ const Browse = () => {
         <SecondaryContainer />
       </div>
     </div>
+  ) : (
+    <>
+      <Header />
+      <GptSearch />
+    </>
   );
 };
 
