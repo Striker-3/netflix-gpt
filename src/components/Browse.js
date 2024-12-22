@@ -11,7 +11,7 @@ import useTopRatedMovies from "../hooks/useTopRatedMovies.js";
 import useUpcomingMovies from "../hooks/useUpcomingMovies.js";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleGptSearch } from "../utils/gptSlice.js";
-import GptSearch from "./GptSearch.js";
+import GptSearchPage from "./GptSearchPage.js";
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
@@ -69,7 +69,7 @@ const Browse = () => {
   ) : (
     <>
       <Header />
-      <GptSearch />
+      <GptSearchPage />
     </>
   );
 };
