@@ -42,18 +42,22 @@ const Browse = () => {
   return !showGptSearch ? (
     <div>
       <div className="relative">
-        <div className="flex justify-between bg-gradient-to-b from-black h-20 absolute w-full z-50">
+        <div className="flex justify-between bg-gradient-to-b from-black md:h-20 absolute w-full z-50">
           <Header />
-          <div className="flex mt-8">
+          <div className="flex items-center mt-4 md:mt-8">
             <button
-              className="text-white  bg-purple-500 mr-8 px-4 rounded-lg"
+              className="text-white bg-purple-500 mr-4 md:mr-8 px-2 md:px-4 md:p-3 rounded-lg"
               onClick={handleGptSearch}
             >
               GPT Search
             </button>
-            <img className="w-12 mr-2" src={USER_LOGO} alt="icon-Netflix" />
+            <img
+              className="w-8 md:w-12 mr-2"
+              src={USER_LOGO}
+              alt="icon-Netflix"
+            />
             <p
-              className="mr-6 p-4 cursor-pointer text-white"
+              className="mr-4 md:mr-6 p-2 md:p-4 cursor-pointer text-white"
               onClick={handleSignOut}
             >
               (Sign Out)

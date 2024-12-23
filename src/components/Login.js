@@ -70,7 +70,7 @@ const Login = () => {
 
   return (
     <div
-      className="relative h-screen bg-cover bg-center bg-no-repeat overflow-hidden   "
+      className="relative  h-screen bg-cover bg-center bg-no-repeat overflow-hidden   "
       style={{ backgroundImage: `url(${BACKGROUND_IMG})` }}
     >
       <div className="absolute inset-0 bg-black opacity-50 -z-10"></div>
@@ -81,9 +81,9 @@ const Login = () => {
       <div className="absolute inset-0 flex items-center justify-center ">
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="bg-black p-8 rounded-lg shadow-lg flex flex-col items-center w-4/12  bg-opacity-70"
+          className="bg-black p-4 md:p-8 rounded-lg shadow-lg flex flex-col items-center w-10/12 md:w-4/12  bg-opacity-70"
         >
-          <h3 className="text-3xl font-bold mb-8 text-center text-white">
+          <h3 className="text-xl md:text-3xl font-bold mb-8 text-center text-white">
             {isSignIn ? "Sign In" : "Sign Up"}
           </h3>
           {!isSignIn && (
