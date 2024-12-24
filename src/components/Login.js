@@ -73,8 +73,8 @@ const Login = () => {
       className="relative  h-screen bg-cover bg-center bg-no-repeat overflow-hidden   "
       style={{ backgroundImage: `url(${BACKGROUND_IMG})` }}
     >
-      <div className="absolute inset-0 bg-black opacity-50 -z-10"></div>
-      <div className=" ml-32 bg-black w-[250px] pl-1">
+      <div className="absolute inset-0  bg-black opacity-50 -z-10"></div>
+      <div className="ml-[84px] md:ml-32 bg-black w-[250px] pl-1">
         <Header />
       </div>
 

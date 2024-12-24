@@ -65,7 +65,7 @@ const Header = () => {
             ))}
           </select>
           <button
-            className="hidden md:block text-white p-2 m-2 px-4"
+            className="hidden md:block md:bg-purple-500 md:rounded-lg text-white p-2 m-2 px-4"
             onClick={handleBack}
           >
             Back
