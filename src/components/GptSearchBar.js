@@ -22,7 +22,7 @@ const GptSearchBar = () => {
 
   const handleGptSearch = async () => {
     const chatCompletion = await client.chat.completions.create({
-      model: "Qwen/Qwen2.5-Coder-32B-Instruct",
+      model: "mistralai/Magistral-Small-2506",
       messages: [
         {
           role: "user",
